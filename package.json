@@ -1,0 +1,20 @@
+{
+  "name": "mongo-node-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create-mongo-indexes.js",
+  "dependencies": {
+    "faker": "^3.1.0",
+    "mongodb": "^2.2.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./bin/install.sh && bin/generate-mocks.js",
+    "populate": "./bin/populate.js",
+    "createindexes": "./bin/create-indexes.js",
+    "sendqueries": "mongo --nodb --quiet ./bin/mongo-queries.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

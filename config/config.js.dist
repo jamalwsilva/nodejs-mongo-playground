@@ -1,0 +1,31 @@
+const BULK_SIZE = 10000;
+const MAX_INSERTS_PER_PROCESS = 20000;
+const NU_BULKS_PER_PROCESS = Math.floor(MAX_INSERTS_PER_PROCESS / BULK_SIZE);
+const MAX_INSERTS_GLOBAL = 10000000;
+const NU_ITERATIONS = Math.floor(MAX_INSERTS_GLOBAL / MAX_INSERTS_PER_PROCESS);
+const MAX_PROCESSES = 2;
+const COLLECTION_NAMES = [
+  'messages_noindexes',
+  'messages_simple',
+  'messages_compound_1x',
+  'messages_compound_3x',
+  'messages_mixed',
+];
+const INDEXES_MAP = {
+  messages_noindexes: [],
+  messages_simple: require(__dirname + '/../indexes/simple.json'),
+  messages_compound_1x: require(__dirname + '/../indexes/compound_1x.json'),
+  messages_compound_3x: require(__dirname + '/../indexes/compound_3x.json'),
+  messages_mixed: require(__dirname + '/../indexes/mixed.json'),
+};
+
+module.exports = {
+  BULK_SIZE: BULK_SIZE,
+  MAX_INSERTS_PER_PROCESS: MAX_INSERTS_PER_PROCESS,
+  NU_BULKS_PER_PROCESS: NU_BULKS_PER_PROCESS,
+  MAX_INSERTS_GLOBAL: MAX_INSERTS_GLOBAL,
+  NU_ITERATIONS: NU_ITERATIONS,
+  MAX_PROCESSES: MAX_PROCESSES,
+  COLLECTION_NAMES: COLLECTION_NAMES,
+  INDEXES_MAP: INDEXES_MAP,
+};

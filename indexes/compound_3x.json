@@ -1,0 +1,14 @@
+[
+  {
+    "fields": {"date": -1, "logtype": 1, "sensor_id": 1},
+    "options": {"name": "date__logtype"}
+  },
+  {
+    "fields": {"date": -1, "logtype": 1, "action": 1, "sensor_id": 1},
+    "options": {"name": "date__logtype__action"}
+  },
+  {
+    "fields": {"date": -1, "logtype": 1, "protocol": 1, "sensor_id": 1},
+    "options": {"name": "date__logtype__protocol"}
+  }
+]
