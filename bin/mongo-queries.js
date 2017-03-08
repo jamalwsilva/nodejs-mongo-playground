@@ -48,6 +48,12 @@ function defaultQueries() {
       date: { $gte: ISODate('2016-02-14T07:33'), $lt: ISODate('2016-02-14T08:33') },
       logtype: 'Logtype 1', action: 'A', src_port: 443,
     },
+    {
+      full_message: /Logtype 3/,
+    },
+    {
+      $text: { $search: 'Logtype 3' },
+    },
   ];
 }
 
