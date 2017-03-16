@@ -22,5 +22,9 @@
   {
     "fields": {"username": 1},
     "options": {"name": "username"}
+  },
+  {
+    "fields": {"full_message": "text"},
+    "options": {"name": "full_message"}
   }
 ]

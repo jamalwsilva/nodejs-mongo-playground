@@ -9,6 +9,10 @@ Date.prototype.tojson = function () {
   return '"' + this.toISOString() + '"';
 };
 
+RegExp.prototype.tojson = function () {
+  return '"' + this + '"';
+};
+
 function getDateInterval(crop) {
   var earliest = logs.messages_simple.find().limit(1).next().date;
   var latest = logs.messages_simple.find().sort({ _id: -1 }).limit(1).next().date;
@@ -85,6 +89,15 @@ var results = logs.getCollectionNames()
       collection: coll,
       queries: queries.map(function (query) {
         var begin = new ISODate();
+        var indexes = logs[coll].getIndexes();
+        if (query.$text && !indexes.filter(index => index.name == 'full_message').length) {
+          return {
+            collection: coll,
+            query: query,
+            message: 'Query impossível de ser realizada. $text.$search só functiona com índice',
+          };
+        }
+
         var count = logs[coll].find(query).count();
         var end = new ISODate();
         return {
